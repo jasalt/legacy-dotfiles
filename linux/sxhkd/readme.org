@@ -1,2 +1,7 @@
+* TODO SWHKS for Wayland (and X11)
+New software which uses same config file syntax.
+https://github.com/waycrate/swhkd
+
+* Original SXHKD for X11
 [[https://github.com/baskerville/sxhkd][Simple X hotkey daemon.]] Better than xbindkeys or any other tool.
 See [[file:setup-ubuntu.sh][Ubuntu 15.10 install script]] for installation.
