@@ -7,12 +7,57 @@
 (global-hl-line-mode 0)
 (global-display-line-numbers-mode 0)
 (global-nlinum-mode 0)
+
 ;;(beacon-mode -1)
+;;(fringe-mode 10)
+
+;; Extra package manager stuff
+
+(prelude-require-package 'use-package)  ;; syntactic helper tool
+
+;; * Quelpa
+;; Build and install your Emacs Lisp packages on-the-fly and directly from source/github.
+;; https://github.com/quelpa/quelpa
+;;(quelpa '(hydra :repo "abo-abo/hydra" :fetcher github))
+;; (prelude-require-package 'quelpa-use-package)
+
+
+(unless (package-installed-p 'quelpa)
+  (with-temp-buffer
+    (url-insert-file-contents "https://github.com/quelpa/quelpa/raw/master/quelpa.el")
+    (eval-buffer)
+    (quelpa-self-upgrade)))
+(quelpa
+ '(quelpa-use-package
+   :fetcher git
+   :url "https://github.com/quelpa/quelpa-use-package.git"))
+(require 'quelpa-use-package)
+
+;; ref: config in quelpa developers stackemacs.el init file
+;;      https://framagit.org/steckerhalter/steckemacs.el/-/blob/master/steckemacs.el
+
+
+;;;; Matrix client config starts
+
+;; Install `plz' HTTP library (not on MELPA yet).
+;;(use-package plz
+;;  :quelpa (plz :fetcher github :repo "alphapapa/plz.el"))
+
+;; Install Ement.
+;;(use-package ement
+;;  :quelpa (ement :fetcher github :repo "alphapapa/ement.el"))
+
+;;;; Matrix client config ends
+
+
+;; (add-to-list 'default-frame-alist '(undecorated . t))  ;; set in init.el
+(setq frame-resize-pixelwise t)
 
 ;; Fix ansi-term C-a keybinding with prelude stealing it
 (add-hook 'term-mode-hook (lambda ()
                             (setq-local prelude-mode
                                         nil)))
+
 
 ;; Setup custom default theme
 ;; First comment out loading of default prelude theme
@@ -20,7 +65,8 @@
 ;; (when prelude-theme
 ;;   (load-theme prelude-theme t))
 
-;;(prelude-require-package 'quasi-monochrome-theme)
+(prelude-require-package 'quasi-monochrome-theme)
+(prelude-require-package 'use-package)
 ;;(load-theme 'quasi-monochrome)
 
 (prelude-require-package 'twittering-mode)
@@ -53,7 +99,7 @@
 (scroll-bar-mode -1) ; Disable scroll bars
 (setq cursor-type '(bar . 1))
 
-(setq frame-title-format (list "Jarkon Emacs [%m-mode] - %b"))
+(setq frame-title-format (list "%b"))
 (prelude-require-package 'smartscan)
 
 ;; (disable-theme 'zenburn)

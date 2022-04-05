@@ -1,0 +1,13 @@
+# brew install blueutil
+# blueutil --paired # check the address first and replace in this script
+res=$(<blueutil_folder>/blueutil --is-connected 3c-a6-f6-c2-8f-e0)
+if [[ "$res" = '1' ]]
+then
+<blueutil_folder>/blueutil --unpair 3c-a6-f6-c2-8f-e0
+else
+<blueutil_folder>/blueutil --unpair 3c-a6-f6-c2-8f-e0
+sleep 1
+<blueutil_folder>/blueutil --pair 3c-a6-f6-c2-8f-e0
+sleep 1
+<blueutil_folder>/blueutil --connect 3c-a6-f6-c2-8f-e0
+fi

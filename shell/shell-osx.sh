@@ -3,18 +3,26 @@
 
 ### Unified operating system package manager commands
 
+alias myiplan="ipconfig getifaddr en1"
+alias myipwlan="ipconfig getifaddr en0"
+
+# Commentary:
+#  This additional alias is for public IP, but it's defined in shared config file shell-common.sh 
+#  defining common functions for both Linux and Mac. 
+#   - TODO Re-write for setting up on higher level script using ismac islinux switch case
+
+# alias myip=myip='curl -s checkip.dyndns.org | sed -e '\''s/.*Current IP Address: //'\'' -e '\''s/<.*$//'\'
+
 
 export PATH="$PATH:$HOME/dotfiles/osx/bin"
 
-# Toggle PostgreSQL service state
-alias postgre-start="launchctl load /usr/local/opt/postgresql/homebrew.mxcl.postgresql.plist"
-alias postgre-stop="launchctl unload /usr/local/opt/postgresql/homebrew.mxcl.postgresql.plist"
-
+# PostgreSQL 
+alias pgup="pg_ctl -D /usr/local/var/postgres start"
+alias pgdown="pg_ctl -D /usr/local/var/postgres stop"
 
 alias o="open ."
 alias lsblk="diskutil list"
 alias lsusb="system_profiler SPUSBDataType"
-
 
 # alias pfp="abspath"
 # alias cbfp=""

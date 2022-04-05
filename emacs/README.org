@@ -1,20 +1,19 @@
-* MacOS Catalina problems with Emacs 37.1 (2020/12)
-Fix issue with launching the app or returning the focus (via Spotlight or Alfred 4). Using `brew install --cask emacs` (emacsformacos).
+* Install with native compilation on MacOS 12.2.1 (Monterey) 2022/03
+Use native compilation for general speed boost. Available as flag in [emacs-plus homebrew recipe](https://github.com/d12frosted/homebrew-emacs-plus).
 
-```
-cd /Applications/Emacs.app/Contents/MacOS
-mv Emacs Emacs-launcher
-ln -s Emacs-x86_64-10_14 Emacs
-# cd /Applications/Emacs.app/Contents/
-# rm -rf _CodeSignature
+    brew tap d12frosted/emacs-plus
+    brew install emacs-plus@29 --with-imagemagick --with-nobu417-big-sur-icon --with-xwidgets --with-native-comp
 
-```
-Commented on: https://spin.atomicobject.com/2019/12/12/fixing-emacs-macos-catalina/
+Emacs binary has problem finding gcc path as noted in [this issue](https://github.com/d12frosted/homebrew-emacs-plus/issues/323#issuecomment-805490388).
+
+Add to `~/.emacs.d/early-init.el`:
+
+    (setenv "LIBRARY_PATH" "/usr/local/opt/gcc/lib/gcc/11:/usr/local/opt/libgccjit/lib/gcc/11:/usr/local/opt/gcc/lib/gcc/11/gcc/x86_64-apple-darwin21/11")
 
 * Config initialization
 Emacs 25 configuration based on [[https://github.com/bbatsov/prelude][Emacs Prelude]].
 
-1) Install Prelude first with =curl -L https://git.io/epre | sh= (check prelude page for updated command)
+1) Install Prelude first with =curl -L https://git.io/epref | sh= (check prelude page for updated command)
 2) Symlink prelude-modules.el =ln -s ~/dotfiles/emacs/prelude-modules.el ~/.emacs.d/=
 3) Symlink init.el =ln -s ~/dotfiles/emacs/init.el ~/.emacs.d/personal/=
 4) Startup Emacs, packages are downloaded.
@@ -37,4 +36,6 @@ Afterwards byte compile file again by removing =/usr/local/share/emacs/24.5/lisp
 Source: http://ju.outofmemory.cn/entry/161810
 ** Using daemon on OSX
 http://emacs.stackexchange.com/questions/141/emacsdaemon-and-emacsclient-on-mac
+
+
 

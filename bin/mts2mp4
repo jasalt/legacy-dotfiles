@@ -1,3 +1,6 @@
 for i in *.mts ; do 
-    ffmpeg -i "$i" -c:v copy -c:a aac -strict experimental -b:a 128k "${i%.mts}.mp4"
+    ffmpeg -i "$i" -c:v copy "${i%.mts}.mp4"
+done
+for i in *.MTS ; do 
+    ffmpeg -i "$i" -c:v copy "${i%.MTS}.mp4"
 done
