@@ -3,16 +3,13 @@
 
 ### Unified operating system package manager commands
 
-alias myiplan="ipconfig getifaddr en1"
-alias myipwlan="ipconfig getifaddr en0"
+alias myipwlan=ipconfig getifaddr en1
+alias myiplan=ipconfig getifaddr en0
 
 # Commentary:
-#  This additional alias is for public IP, but it's defined in shared config file shell-common.sh 
-#  defining common functions for both Linux and Mac. 
-#   - TODO Re-write for setting up on higher level script using ismac islinux switch case
-
+# This additional alias is for public IP, but it's defined in cross platform shared config file shell-common.sh defining common functions for both Linux and Mac. 
+# TODO Re-write for setting up on higher level script using ismac islinux switch case
 # alias myip=myip='curl -s checkip.dyndns.org | sed -e '\''s/.*Current IP Address: //'\'' -e '\''s/<.*$//'\'
-
 
 export PATH="$PATH:$HOME/dotfiles/osx/bin"
 
@@ -42,7 +39,7 @@ alias ai="brew install"
 alias ar="brew uninstall"
 alias as="brew search"
 alias cask="brew cask"
-alias aii="brew cask install"
+alias aii="brew install --cask"
 alias ass="brew cask search"
 alias aup="brew update"
 alias aug="brew upgrade"
