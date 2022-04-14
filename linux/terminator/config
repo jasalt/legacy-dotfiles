@@ -1,41 +1,63 @@
 [global_config]
-  enabled_plugins = ,
-  geometry_hinting = False
   handle_size = 1
-  inactive_color_offset = 1.0
-  suppress_multiple_term_dialog = True
   tab_position = bottom
-  title_inactive_bg_color = "#000000"
-  title_inactive_fg_color = "#bfbfbf"
   title_transmit_bg_color = "#c8c8c8"
+  title_inactive_fg_color = "#bfbfbf"
+  title_inactive_bg_color = "#000000"
+  inactive_color_offset = 1.0
+  enabled_plugins = ,
+  suppress_multiple_term_dialog = True
 [keybindings]
-  cycle_next = None
-  cycle_prev = None
+  cycle_next = <Primary>Tab
+  cycle_prev = <Primary><Shift>Tab
+  go_next = ""
+  go_prev = ""
+  go_up = None
   go_down = None
   go_left = None
-  go_next = <Primary>Tab
-  go_prev = <Primary><Shift>Tab
   go_right = None
-  go_up = None
-  hide_window = None
-  insert_number = None
-  insert_padded = None
-  next_tab = <Primary>Tab
   split_horiz = <Primary><Shift>o
   split_vert = <Primary><Alt>o
-  switch_to_tab_1 = <Super>1
-  switch_to_tab_2 = <Super>2
-  switch_to_tab_3 = <Super>3
-  switch_to_tab_4 = <Super>4
-  switch_to_tab_5 = <Super>5
-  switch_to_tab_6 = <Super>6
+  close_term = <Primary><Shift>w
+  toggle_scrollbar = None
+  close_window = ""
+  toggle_zoom = None
+  next_tab = None
+  switch_to_tab_1 = <Alt>1
+  switch_to_tab_2 = <Alt>2
+  switch_to_tab_3 = <Alt>3
+  switch_to_tab_4 = <Alt>4
+  switch_to_tab_5 = <Alt>5
+  switch_to_tab_6 = <Alt>6
   switch_to_tab_7 = <Alt>7
   switch_to_tab_8 = <Alt>8
   switch_to_tab_9 = <Alt>9
-  toggle_scrollbar = None
-  toggle_zoom = None
+  hide_window = None
   ungroup_all = None
   ungroup_tab = None
+  new_window = <Primary><Shift>n
+  insert_number = None
+  insert_padded = None
+  edit_window_title = ""
+  edit_tab_title = ""
+  edit_terminal_title = ""
+  help = ""
+[profiles]
+  [[default]]
+    background_color = "#282828"
+    background_darkness = 1.0
+    background_type = transparent
+    color_scheme = custom
+    cursor_blink = False
+    cursor_color = "#808080"
+    font = Inconsolata Medium 12
+    foreground_color = "#ebdbb2"
+    show_titlebar = False
+    scrollbar_position = hidden
+    scrollback_lines = 5000
+    scrollback_infinite = True
+    palette = "#282828:#cc241d:#98971a:#d79921:#458588:#b16286:#689d6a:#a89984:#928374:#fb4934:#b8bb26:#fabd2f:#83a598:#d3869b:#8ec07c:#ebdbb2"
+    use_system_font = False
 [layouts]
   [[default]]
     [[[child1]]]
@@ -46,20 +68,3 @@
       parent = ""
       type = Window
 [plugins]
-[profiles]
-  [[default]]
-    background_color = "#2b2b2b"
-    background_darkness = 0.9
-    background_image = None
-    background_type = transparent
-    color_scheme = custom
-    cursor_blink = False
-    cursor_color = "#808080"
-    font = Inconsolata Medium 12
-    foreground_color = "#ffffff"
-    scroll_on_output = False
-    scrollback_infinite = True
-    scrollback_lines = 5000
-    scrollbar_position = hidden
-    show_titlebar = False
-    use_system_font = False

@@ -77,15 +77,15 @@
 
 (add-hook 'smartparens-mode-hook 'my-smartparens-mode-hook)
 
-(prelude-require-package 'yasnippet)
-(require 'yasnippet)
-(define-key yas-minor-mode-map (kbd "<tab>") nil)
-(define-key yas-minor-mode-map (kbd "TAB") nil)
-(define-key yas-minor-mode-map (kbd "C-<tab>") 'yas-expand)
-(yas-global-mode 1)
+;; (prelude-require-package 'yasnippet)
+;; (require 'yasnippet)
+;; (define-key yas-minor-mode-map (kbd "<tab>") nil)
+;; (define-key yas-minor-mode-map (kbd "TAB") nil)
+;; (define-key yas-minor-mode-map (kbd "C-<tab>") 'yas-expand)
+;; (yas-global-mode 1)
 
-(let ((my-yas-custom-dir (concat dotfiles-folder "emacs/snippets/")))
-  (setq yas-snippet-dirs (append yas-snippet-dirs (list my-yas-custom-dir))))
+;; (let ((my-yas-custom-dir (concat dotfiles-folder "emacs/snippets/")))
+;;   (setq yas-snippet-dirs (append yas-snippet-dirs (list my-yas-custom-dir))))
 
 (define-key global-map (kbd "<f5>") 'compile)
 

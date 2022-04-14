@@ -5,21 +5,20 @@
 (setq prelude-flyspell nil)
 (guru-mode 0)
 (global-hl-line-mode 0)
+(global-display-line-numbers-mode 0)
 (global-nlinum-mode 0)
-(beacon-mode -1)
-;;(fringe-mode 10)
 
+;;(beacon-mode -1)
+;;(fringe-mode 10)
 
 ;; Extra package manager stuff
 
 (prelude-require-package 'use-package)  ;; syntactic helper tool
 
 ;; * Quelpa
-;; Build and install your Emacs Lisp packages on-the-fly and directly from source. Install modules straight from github repo's like with Python Pip.
+;; Build and install your Emacs Lisp packages on-the-fly and directly from source/github.
 ;; https://github.com/quelpa/quelpa
-
 ;;(quelpa '(hydra :repo "abo-abo/hydra" :fetcher github))
-
 ;; (prelude-require-package 'quelpa-use-package)
 
 
@@ -40,14 +39,16 @@
 
 ;;;; Matrix client config starts
 
-
 ;; Install `plz' HTTP library (not on MELPA yet).
-(use-package plz
-  :quelpa (plz :fetcher github :repo "alphapapa/plz.el"))
+;;(use-package plz
+;;  :quelpa (plz :fetcher github :repo "alphapapa/plz.el"))
 
 ;; Install Ement.
-(use-package ement
-  :quelpa (ement :fetcher github :repo "alphapapa/ement.el"))
+;;(use-package ement
+;;  :quelpa (ement :fetcher github :repo "alphapapa/ement.el"))
+
+;;;; Matrix client config ends
+
 
 ;; (add-to-list 'default-frame-alist '(undecorated . t))  ;; set in init.el
 (setq frame-resize-pixelwise t)
@@ -56,7 +57,6 @@
 (add-hook 'term-mode-hook (lambda ()
                             (setq-local prelude-mode
                                         nil)))
-;;;; Matrix client config ends
 
 
 ;; Setup custom default theme
@@ -233,10 +233,10 @@
 (key-chord-define-global "jf" 'avy-goto-word-1)
 
 ;; Jump to next character, repeat the character to jump to next one.
-(prelude-require-package 'iy-go-to-char)
+;;(prelude-require-package 'iy-go-to-char)
 (key-chord-define-global "jj" nil)
-(key-chord-define-global "jj" 'iy-go-to-char)
-(key-chord-define-global "hh" 'iy-go-to-char-backward)
+;;(key-chord-define-global "jj" 'iy-go-to-char)
+;;(key-chord-define-global "hh" 'iy-go-to-char-backward)
 
 (key-chord-define-global "jn" 'mc/mark-more-like-this-extended)
 ;; TODO 'mc/mark-more-like-this-extended for previous to make it work.

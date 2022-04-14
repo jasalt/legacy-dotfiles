@@ -30,7 +30,8 @@
          ;;"lang/clojure/clojure.el"
 )))
   (dolist (entry conf-files) (load (concat dotfiles-folder entry))))
-(load "~/.maildir/.mu4e.el")
+
+;;(load "~/.maildir/.mu4e.el")
 
 (defvar org-folder)
 (setq org-folder "~/notes/")
