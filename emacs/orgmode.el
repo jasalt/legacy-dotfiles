@@ -6,7 +6,25 @@
 ;; setup files ending in “.ledger” to open in ledger-mode
 ;; (add-to-list 'auto-mode-alist '("\\.ledger\\'" . ledger-mode))
 
-(prelude-require-package 'writeroom-mode)
+
+;;(prelude-require-package 'writeroom-mode) ;; does a bit too much
+
+(prelude-require-package 'olivetti)
+(add-hook 'olivetti-mode-hook
+	  (lambda ()
+	    (if olivetti-mode
+		(progn
+		  (blink-cursor-mode 0)  ; turn off blinky cursor
+		  (fringe-mode 0)  ; hide fringes
+		  (setq-local inhibit-message t))  ; don't distract
+	      (progn
+		(blink-cursor-mode t)
+		(fringe-mode nil)
+		(setq-local inhibit-message t)))))
+
+
+
+
 
 ;; https://www.languagetool.org
 ;; (prelude-require-package 'langtool)
@@ -186,8 +204,14 @@
 (setq org-refile-use-outline-path t)
 (setq org-outline-path-complete-in-steps t)
 
+
+;;; Rewrite this here to disable indicator cap
+
+
 (defun own-org-mode-hook ()
   "Modify keymaps and settings used by `org-mode'."
+  ;; (fringe-mode 0)
+  
   (visual-line-mode 1)
   (org-indent-mode 1)
   (company-mode 0)

@@ -1,5 +1,9 @@
+# magic mouse reconnect/connect script to easily switch it between devices by unpairing it if it's connected and pairing if it's not connected
+
+# prereq:
 # brew install blueutil
 # blueutil --paired # check the address first and replace in this script
+
 res=$(<blueutil_folder>/blueutil --is-connected 3c-a6-f6-c2-8f-e0)
 if [[ "$res" = '1' ]]
 then

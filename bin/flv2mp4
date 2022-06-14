@@ -1,0 +1,6 @@
+for i in *.flv ; do 
+    ffmpeg -i "$i" -c:v copy "${i%.flv}.mp4"
+done
+for i in *.FLV ; do 
+    ffmpeg -i "$i" -c:v copy "${i%.FLV}.mp4"
+done
