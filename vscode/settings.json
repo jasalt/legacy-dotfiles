@@ -1,20 +1,77 @@
 {
+    "window.autoDetectColorScheme": true,
+    "workbench.preferredLightColorTheme": "Default Light+",
+    "workbench.preferredDarkColorTheme": "Zenburn",
     "workbench.startupEditor": "newUntitledFile",
-    "workbench.activityBar.visible": true,
-    "editor.minimap.enabled": false,
     "git.confirmSync": false,
     "todo-tree.tree.showScanModeButton": false,
     "python.languageServer": "Pylance",
-    "python.pythonPath": "/Users/a554/.pyenv/versions/odoo/bin/python",
     "git.suggestSmartCommit": false,
-    "workbench.colorTheme": "Visual Studio Light",
-    "workbench.editorAssociations": [
-        {
-            "viewType": "jupyter.notebook.ipynb",
-            "filenamePattern": "*.ipynb"
-        }
-    ],
+    "workbench.editorAssociations": {
+        "*.ipynb": "jupyter-notebook"
+    },
     "python.showStartPage": false,
     "editor.largeFileOptimizations": false,
-    "window.zoomLevel": 1
+    "python.defaultInterpreterPath": "/Users/a554/.pyenv/shims/python",
+    "python.experiments.enabled": false,
+    "python.analysis.typeCheckingMode": "basic",
+    "python.analysis.diagnosticSeverityOverrides": {
+        "reportOptionalSubscript": "information",
+        "reportOptionalMemberAccess": "information",
+    },
+    "security.workspace.trust.untrustedFiles": "open",
+    "security.workspace.trust.enabled": false,
+    "notebook.cellToolbarLocation": {
+        "default": "right",
+        "jupyter-notebook": "left"
+    },
+    "workbench.editor.untitled.hint": "hidden",
+    "update.showReleaseNotes": false,
+    "json.maxItemsComputed": 15000,
+    "git.openDiffOnClick": false,
+    "workbench.experimental.sidePanel.enabled": true,
+    "vscode_custom_css.imports": [
+        ".tabs-container {display: none !important;}"
+    ],
+    "emacs-mcx.useMetaPrefixMacCmd": true,
+    "timeline.excludeSources": [
+        "timeline.localHistory"
+    ],
+    "editor.fontSize": 16,
+    "editor.folding": false,
+    "workbench.activityBar.visible": false,
+    "breadcrumbs.enabled": false,
+    "telemetry.telemetryLevel": "error",
+    "workbench.colorCustomizations": {
+        "[Zenburn]": {
+            "statusBar.debuggingBackground": "#0000003e"
+        },
+    },
+    "activitusbar.showSourceControlCounter": true,
+    "gitblame.ignoreWhitespace": true,
+    // "gitblame.isWebPathPlural": true,
+    "resmon.show.cpufreq": false,
+    "resmon.show.battery": false,
+    "keyboard.touchbar.ignored": [
+        "workbench.action.navigateForward"
+    ],
+    "touchBar.toggleZenMode": false,
+    "touchBar.terminal": true,
+    "touchBar.closeOtherEditors": false,
+    "touchBar.copyLinesDownAction": false,
+    "touchBar.rename": false,
+    "touchBar.goToReferences": false,
+    "touchBar.showExplorer": true,
+    "workbench.colorTheme": "Default Light+",
+    "intelephense.environment.includePaths": [
+        "../../../"
+    ],
+    "intelephense.environment.phpVersion": "7.3.0",
+    "intelephense.telemetry.enabled": false,
+    "[javascript]": {
+        "editor.defaultFormatter": "rvest.vs-code-prettier-eslint"
+    },
+    "editor.minimap.enabled": false,
+    "window.zoomLevel": -1,
+
 }

@@ -52,5 +52,35 @@
     {
         "key": "ctrl+3",
         "command": "workbench.action.focusThirdEditorGroup"
+    },
+    {
+        "key": "cmd+k e",
+        "command": "-workbench.files.action.focusOpenEditorsView",
+        "when": "workbench.explorer.openEditorsView.active"
+    },
+    {
+        "key": "alt+cmd+1",
+        "command": "workbench.scm.focus"
+    },
+    {
+        "key": "alt+cmd+2",
+        "command": "workbench.debug.action.focusVariablesView"
+    },
+    {
+        "key": "shift+cmd+d",
+        "command": "-workbench.view.debug",
+        "when": "viewContainer.workbench.view.debug.enabled"
+    },
+    {
+        "key": "alt+cmd+4",
+        "command": "workbench.view.remote"
+    },
+    {
+        "key": "alt+cmd+3",
+        "command": "workbench.action.findInFiles"
+    },
+    {
+        "key": "shift+cmd+f",
+        "command": "-workbench.action.findInFiles"
     }
 ]
