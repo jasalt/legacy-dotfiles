@@ -4,6 +4,17 @@
 <dict>
 	<key>autoPaste</key>
 	<false/>
+	<key>hotkey</key>
+	<dict>
+		<key>key</key>
+		<integer>7</integer>
+		<key>mod</key>
+		<integer>1835008</integer>
+		<key>string</key>
+		<string>X</string>
+	</dict>
+	<key>ignoreRemoteClipboard</key>
+	<true/>
 	<key>persistFor</key>
 	<integer>0</integer>
 	<key>viewerKeywordEnabled</key>

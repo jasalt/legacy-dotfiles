@@ -66,7 +66,7 @@
 			<dict>
 				<key>paths</key>
 				<array>
-					<string>/Applications/Emacs.app</string>
+					<string>/System/Volumes/Data/usr/local/Cellar/emacs-plus@28/28.1/Emacs.app</string>
 				</array>
 				<key>toggle</key>
 				<true/>
@@ -78,11 +78,35 @@
 			<key>version</key>
 			<integer>1</integer>
 		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>applescript</key>
+				<string>on alfred_script(q)
+  tell applications "Emacs" to activate
+end alfred_script</string>
+				<key>cachescript</key>
+				<false/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.applescript</string>
+			<key>uid</key>
+			<string>71060040-6541-4615-844E-0377E066C589</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
 	</array>
 	<key>readme</key>
 	<string></string>
 	<key>uidata</key>
 	<dict>
+		<key>71060040-6541-4615-844E-0377E066C589</key>
+		<dict>
+			<key>xpos</key>
+			<integer>305</integer>
+			<key>ypos</key>
+			<integer>220</integer>
+		</dict>
 		<key>D0D170CF-42DF-4377-8032-B69D1C04AE97</key>
 		<dict>
 			<key>xpos</key>
