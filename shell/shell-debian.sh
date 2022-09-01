@@ -1,5 +1,6 @@
 # Shared shell configuration for debian systems. Sourced from eg. shell-mint.sh
 
+alias o="open ."
 export PATH="$PATH:$HOME/dotfiles/linux/bin"
 
 alias aup="sudo apt update"

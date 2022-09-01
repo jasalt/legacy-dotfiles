@@ -45,6 +45,7 @@
 (require 'org)
 ;; https://stackoverflow.com/questions/12432093/get-rid-of-reference-to-free-variable-byte-compilation-warnings
 
+(setq org-startup-folded t)
 
 (require 'find-lisp)
 ;; Add projects folder to agenda files
