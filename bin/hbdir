@@ -1,0 +1,38 @@
+#!/bin/bash -eux
+
+# HandBrake video encoder lacks batch proper processing and does not preserve video CreateDate metadata.
+
+# This script runs HandBrake for all supported video files in given directory with user defined preset.
+# Metadata gets copied over from the original files after conversion with separate platform dependent
+# command line tools. Related issue https://github.com/HandBrake/HandBrake/issues/3588
+
+# Written on MacOS in 2022, homebrew handbrake + official app installed from dng.
+# Probably works elsewhere with minor modifications.
+
+
+wd=`pwd`
+
+preset="TestPreset"
+
+echo "Using HandBrake preset \"$preset\""
+
+read -p "Do you want to compress files in $wd (y/n) " yn
+
+case $yn in 
+	y ) echo ok, we will proceed;;
+	n ) echo exiting...;
+		exit;;
+	* ) echo invalid response;
+		exit 1;;
+esac
+
+echo "Creating folder ./originals"
+mkdir originals
+
+for f in *.MTS *.mp4; do
+    echo "Moving $f to ./originals and compressing it to cwd"
+    HandBrakeCLI \
+        -i INFILE \
+        -o OUTFILE \
+        --preset-import-gui --preset $preset
+done
