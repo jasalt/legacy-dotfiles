@@ -7,7 +7,11 @@
 # command line tools. Related issue https://github.com/HandBrake/HandBrake/issues/3588
 
 # Written on MacOS in 2022, homebrew handbrake + official app installed from dng.
-# Probably works elsewhere with minor modifications.
+# Probably works on Linux by changing GetFileInfo and SetFile commands to touch.
+
+if ! [[ $OSTYPE == 'darwin'* ]]; then
+  echo 'Only Mac supported for now, sorry. Read script notes.'
+fi
 
 cd $1
 
@@ -35,18 +39,19 @@ then
     mkdir originals
 fi
 
-filelist=`find . -type f \( -iname "*.mts" -o -iname "*.mp4" \) -print`
-echo $filelist
+file_list=`find . -maxdepth 1 -type f \( -iname "*.mts" -o -iname "*.mp4" \) -print`
+echo $file_list
 
-for original in $filelist; do
+for original in $file_list; do
     echo "Moving $original to ./originals and compressing it to cwd"
     mv $original ./originals
     new_file=${original%.*}.$output_container
 
     HandBrakeCLI \
-        -i ./originals/$original \
+        -i originals/$original \
         -o $new_file \
         --preset-import-gui --preset $preset
 
-    # SetFile -d $(GetFileInfo -d "./originals/$original") $new_file
+    meta_data=$(GetFileInfo -d "originals/$original")  
+    SetFile -d "$meta_data" $new_file
 done
