@@ -1,0 +1,30 @@
+#!/bin/bash -eux
+
+# Runs HandBrake for all supported video files in current directory with given preset.
+
+wd=`pwd`
+
+preset="TestPreset"
+
+echo "Using HandBrake preset \"$preset\""
+
+read -p "Do you want to compress files in $wd (y/n) " yn
+
+case $yn in 
+	y ) echo ok, we will proceed;;
+	n ) echo exiting...;
+		exit;;
+	* ) echo invalid response;
+		exit 1;;
+esac
+
+echo "Creating folder ./originals"
+mkdir originals
+
+for f in *.MTS *.mp4; do
+    echo "Moving $f to ./originals and compressing it to cwd"
+    HandBrakeCLI \
+        -i INFILE \
+        -o OUTFILE \
+        --preset-import-gui --preset $preset
+done
