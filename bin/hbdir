@@ -9,14 +9,17 @@
 # Written on MacOS in 2022, homebrew handbrake + official app installed from dng.
 # Probably works elsewhere with minor modifications.
 
+cd $1
 
 wd=`pwd`
 
 preset="TestPreset"
+output_container="mp4"
+originals_path="originals"
 
-echo "Using HandBrake preset \"$preset\""
+echo "Using HandBrake preset \"$preset\" with output container $output_container"
 
-read -p "Do you want to compress files in $wd (y/n) " yn
+read -p "Do you want to re-encode and compress files in $wd (y/n) " yn
 
 case $yn in 
 	y ) echo ok, we will proceed;;
@@ -26,13 +29,24 @@ case $yn in
 		exit 1;;
 esac
 
-echo "Creating folder ./originals"
-mkdir originals
+if ! [[ -d "./$originals_path" ]]
+then
+    echo "Creating folder ./$originals_path"
+    mkdir originals
+fi
 
-for f in *.MTS *.mp4; do
-    echo "Moving $f to ./originals and compressing it to cwd"
+filelist=`find . -type f \( -iname "*.mts" -o -iname "*.mp4" \) -print`
+echo $filelist
+
+for original in $filelist; do
+    echo "Moving $original to ./originals and compressing it to cwd"
+    mv $original ./originals
+    new_file=${original%.*}.$output_container
+
     HandBrakeCLI \
-        -i INFILE \
-        -o OUTFILE \
+        -i ./originals/$original \
+        -o $new_file \
         --preset-import-gui --preset $preset
+
+    # SetFile -d $(GetFileInfo -d "./originals/$original") $new_file
 done
