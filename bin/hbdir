@@ -1,0 +1,57 @@
+#!/bin/bash -eux
+
+# HandBrake video encoder lacks batch proper processing and does not preserve video CreateDate metadata.
+
+# This script runs HandBrake for all supported video files in given directory with user defined preset.
+# Metadata gets copied over from the original files after conversion with separate platform dependent
+# command line tools. Related issue https://github.com/HandBrake/HandBrake/issues/3588
+
+# Written on MacOS in 2022, homebrew handbrake + official app installed from dng.
+# Probably works on Linux by changing GetFileInfo and SetFile commands to touch.
+
+if ! [[ $OSTYPE == 'darwin'* ]]; then
+  echo 'Only Mac supported for now, sorry. Read script notes.'
+fi
+
+cd $1
+
+wd=`pwd`
+
+preset="TestPreset"
+output_container="mp4"
+originals_path="originals"
+
+echo "Using HandBrake preset \"$preset\" with output container $output_container"
+
+read -p "Do you want to re-encode and compress files in $wd (y/n) " yn
+
+case $yn in 
+	y ) echo ok, we will proceed;;
+	n ) echo exiting...;
+		exit;;
+	* ) echo invalid response;
+		exit 1;;
+esac
+
+if ! [[ -d "./$originals_path" ]]
+then
+    echo "Creating folder ./$originals_path"
+    mkdir originals
+fi
+
+file_list=`find . -maxdepth 1 -type f \( -iname "*.mts" -o -iname "*.mp4" \) -print`
+echo $file_list
+
+for original in $file_list; do
+    echo "Moving $original to ./originals and compressing it to cwd"
+    mv $original ./originals
+    new_file=${original%.*}.$output_container
+
+    HandBrakeCLI \
+        -i originals/$original \
+        -o $new_file \
+        --preset-import-gui --preset $preset
+
+    meta_data=$(GetFileInfo -d "originals/$original")  
+    SetFile -d "$meta_data" $new_file
+done
