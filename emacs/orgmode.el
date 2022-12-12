@@ -6,6 +6,10 @@
 ;; setup files ending in “.ledger” to open in ledger-mode
 ;; (add-to-list 'auto-mode-alist '("\\.ledger\\'" . ledger-mode))
 
+(prelude-require-package 'org-download)
+(require 'org-download)
+(setq-default org-download-image-dir "~/notes/pics/")
+(setq org-image-actual-width 400)
 
 ;;(prelude-require-package 'writeroom-mode) ;; does a bit too much
 
@@ -21,9 +25,6 @@
 		(blink-cursor-mode t)
 		(fringe-mode nil)
 		(setq-local inhibit-message t)))))
-
-
-
 
 
 ;; https://www.languagetool.org
