@@ -3,7 +3,13 @@
 (prelude-require-package 'web-beautify)
 (prelude-require-package 'emmet-mode)
 (prelude-require-package 'pyenv-mode)
-(prelude-require-package 'python-django)
+
+;; debugger for python (and others) TODO
+(prelude-require-package 'realgud)
+
+;; sql-mode auto indenting does not work correclty without this
+(prelude-require-package 'sql-indent)
+
 
 (add-to-list 'auto-mode-alist '("\\.phtml\\'" . web-mode))
 ;;(add-to-list 'auto-mode-alist '("\\.tpl\\.php\\'" . web-mode))
