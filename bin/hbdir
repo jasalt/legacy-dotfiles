@@ -9,29 +9,42 @@
 # Written on MacOS in 2022, homebrew handbrake + official app installed from dng.
 # Probably works on Linux by changing GetFileInfo and SetFile commands to touch.
 
+# Issues
+# - Does not accept spaces on file names
+
+
+# Pre-requirements
+# - brew install handbrake findutils
+# - Install official HandBrake GUI and create preset used in this script, close GUI to make it available to CLI
+# fish_add_path /opt/homebrew/opt/findutils/libexec/gnubin  # if using fish
+
+# Usage
+# $ hbdir "<HandBrake Preset>" <directory to convert>
+
+
 if ! [[ $OSTYPE == 'darwin'* ]]; then
   echo 'Only Mac supported for now, sorry. Read script notes.'
 fi
 
-cd $1
+cd $2
 
 wd=`pwd`
 
-preset="TestPreset"
+preset=$1  # "G30 3M"
 output_container="mp4"
 originals_path="originals"
 
 echo "Using HandBrake preset \"$preset\" with output container $output_container"
 
-read -p "Do you want to re-encode and compress files in $wd (y/n) " yn
+#read -p "Do you want to re-encode and compress files in $wd (y/n) " yn
 
-case $yn in 
-	y ) echo ok, we will proceed;;
-	n ) echo exiting...;
-		exit;;
-	* ) echo invalid response;
-		exit 1;;
-esac
+#case $yn in 
+#	y ) echo ok, we will proceed;;
+#	n ) echo exiting...;
+		# exit;;
+#	* ) echo invalid response;
+		# exit 1;;
+#esac
 
 if ! [[ -d "./$originals_path" ]]
 then
@@ -39,16 +52,16 @@ then
     mkdir originals
 fi
 
-file_list=`find . -maxdepth 1 -type f \( -iname "*.mts" -o -iname "*.mp4" \) -print`
+file_list=`find . -maxdepth 1 -type f \( -iname "*.mts" -o -iname "*.mp4" -o -iname "*.avi" -o -iname "*.mov" \) -print`  #printf '"%f"\n' fails later
 echo $file_list
 
 for original in $file_list; do
     echo "Moving $original to ./originals and compressing it to cwd"
-    mv $original ./originals
+    mv "$original" ./originals
     new_file=${original%.*}.$output_container
 
     HandBrakeCLI \
-        -i originals/$original \
+        -i originals/"$original" \
         -o $new_file \
         --preset-import-gui --preset $preset
 
