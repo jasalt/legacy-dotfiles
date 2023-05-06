@@ -1,6 +1,6 @@
 for i in *.mts ; do 
-    ffmpeg -i "$i" -c:v copy "${i%.mts}.mp4"
+    ffmpeg -ss 00:01:00 -sseof 0 -i "$i" -vcodec copy -acodec copy "${i%.mts}.mp4"
 done
 for i in *.MTS ; do 
-    ffmpeg -i "$i" -c:v copy "${i%.MTS}.mp4"
+    ffmpeg -ss 00:01:00 -sseof 0 -i "$i" -vcodec copy -acodec copy "${i%.MTS}.mp4"
 done
