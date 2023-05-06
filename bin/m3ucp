@@ -1,0 +1,30 @@
+#!/usr/bin/python3
+import sys
+import os
+
+from shutil import copyfile
+
+# python pl-copy.py all.m3u E:\music\
+def main():
+    if len(sys.argv) < 3:
+        return 1
+
+    playlist_file = sys.argv[1]
+    output_dir = sys.argv[2]
+
+    with open(playlist_file, 'r') as f:
+        for line in f:
+            if line.startswith('#'):
+                # Skip m3u comments
+                continue
+            else:
+                nle = line.rstrip()
+                basename = os.path.basename(nle)
+                print("copying file %s..." % (basename,))
+                dst = os.path.join(output_dir, basename)
+                copyfile(nle, dst)
+
+    return 0
+
+if __name__ == "__main__":
+    sys.exit(main())
