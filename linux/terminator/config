@@ -1,9 +1,5 @@
 [global_config]
-  handle_size = 1
   tab_position = bottom
-  title_transmit_bg_color = "#c8c8c8"
-  title_inactive_fg_color = "#bfbfbf"
-  title_inactive_bg_color = "#000000"
   inactive_color_offset = 1.0
   enabled_plugins = ,
   suppress_multiple_term_dialog = True
@@ -49,8 +45,7 @@
     background_type = transparent
     color_scheme = custom
     cursor_blink = False
-    cursor_color = "#808080"
-    font = Inconsolata Medium 12
+    font = Inconsolata Nerd Font Mono Bold 13
     foreground_color = "#ebdbb2"
     show_titlebar = False
     scrollbar_position = hidden
