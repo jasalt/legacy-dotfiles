@@ -6,4 +6,4 @@ python-dotenv==0.3.0
 pytz==2015.7
 requests==2.31.0
 #six==1.10.0
-wheel==0.38.1
+wheel==0.46.2
